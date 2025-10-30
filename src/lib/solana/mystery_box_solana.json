@@ -1,0 +1,1208 @@
+{
+  "accounts": [
+    {
+      "discriminator": [
+        84,
+        58,
+        85,
+        105,
+        241,
+        51,
+        143,
+        79
+      ],
+      "name": "MysteryBox"
+    }
+  ],
+  "address": "FDXxJHprFRFf293SMGkB8pdDMbM4zaxw9ykuqvATihEs",
+  "errors": [
+    {
+      "code": 6000,
+      "msg": "Contract is not active",
+      "name": "ContractInactive"
+    },
+    {
+      "code": 6001,
+      "msg": "Invalid amount",
+      "name": "InvalidAmount"
+    },
+    {
+      "code": 6002,
+      "msg": "Unauthorized",
+      "name": "Unauthorized"
+    },
+    {
+      "code": 6003,
+      "msg": "Insufficient balance",
+      "name": "InsufficientBalance"
+    },
+    {
+      "code": 6004,
+      "msg": "Swap failed",
+      "name": "SwapFailed"
+    },
+    {
+      "code": 6005,
+      "msg": "Minimum output not met",
+      "name": "MinimumOutputNotMet"
+    }
+  ],
+  "events": [
+    {
+      "discriminator": [
+        178,
+        105,
+        201,
+        147,
+        144,
+        4,
+        253,
+        8
+      ],
+      "name": "BatchDistributionStarted"
+    },
+    {
+      "discriminator": [
+        217,
+        85,
+        167,
+        76,
+        252,
+        235,
+        174,
+        172
+      ],
+      "name": "BoxPurchased"
+    },
+    {
+      "discriminator": [
+        62,
+        47,
+        188,
+        7,
+        161,
+        103,
+        217,
+        210
+      ],
+      "name": "BoxPurchasedAutomatic"
+    },
+    {
+      "discriminator": [
+        147,
+        26,
+        176,
+        127,
+        99,
+        86,
+        68,
+        204
+      ],
+      "name": "OnchainSwapRequested"
+    },
+    {
+      "discriminator": [
+        199,
+        225,
+        109,
+        190,
+        164,
+        42,
+        135,
+        50
+      ],
+      "name": "ProgramBalances"
+    },
+    {
+      "discriminator": [
+        145,
+        249,
+        69,
+        48,
+        206,
+        86,
+        91,
+        66
+      ],
+      "name": "SolWithdrawn"
+    },
+    {
+      "discriminator": [
+        134,
+        40,
+        102,
+        142,
+        143,
+        143,
+        189,
+        249
+      ],
+      "name": "SwapRequested"
+    },
+    {
+      "discriminator": [
+        180,
+        188,
+        183,
+        1,
+        208,
+        145,
+        174,
+        124
+      ],
+      "name": "UsdcDeposited"
+    },
+    {
+      "discriminator": [
+        253,
+        234,
+        148,
+        188,
+        79,
+        29,
+        170,
+        182
+      ],
+      "name": "UsdcDistributed"
+    }
+  ],
+  "instructions": [
+    {
+      "accounts": [
+        {
+          "name": "mystery_box",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  109,
+                  121,
+                  115,
+                  116,
+                  101,
+                  114,
+                  121,
+                  95,
+                  98,
+                  111,
+                  120
+                ]
+              }
+            ]
+          },
+          "writable": true
+        },
+        {
+          "name": "user",
+          "signer": true,
+          "writable": true
+        },
+        {
+          "name": "program_usdc_account",
+          "writable": true
+        },
+        {
+          "name": "usdc_mint"
+        },
+        {
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+          "name": "token_program"
+        }
+      ],
+      "args": [
+        {
+          "name": "recipients",
+          "type": {
+            "vec": "pubkey"
+          }
+        },
+        {
+          "name": "amounts",
+          "type": {
+            "vec": "u64"
+          }
+        }
+      ],
+      "discriminator": [
+        139,
+        9,
+        191,
+        229,
+        40,
+        46,
+        213,
+        238
+      ],
+      "name": "batch_distribute_usdc"
+    },
+    {
+      "accounts": [
+        {
+          "name": "mystery_box",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  109,
+                  121,
+                  115,
+                  116,
+                  101,
+                  114,
+                  121,
+                  95,
+                  98,
+                  111,
+                  120
+                ]
+              }
+            ]
+          },
+          "writable": true
+        },
+        {
+          "name": "user",
+          "signer": true,
+          "writable": true
+        },
+        {
+          "name": "program_wsol_account",
+          "writable": true
+        },
+        {
+          "name": "program_usdc_account",
+          "writable": true
+        },
+        {
+          "name": "wsol_mint"
+        },
+        {
+          "name": "usdc_mint"
+        },
+        {
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+          "name": "token_program"
+        },
+        {
+          "address": "11111111111111111111111111111111",
+          "name": "system_program"
+        }
+      ],
+      "args": [
+        {
+          "name": "sol_amount",
+          "type": "u64"
+        },
+        {
+          "name": "recipient",
+          "type": "pubkey"
+        }
+      ],
+      "discriminator": [
+        75,
+        92,
+        127,
+        46,
+        91,
+        169,
+        215,
+        21
+      ],
+      "name": "convert_sol_to_usdc_onchain"
+    },
+    {
+      "accounts": [
+        {
+          "name": "mystery_box",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  109,
+                  121,
+                  115,
+                  116,
+                  101,
+                  114,
+                  121,
+                  95,
+                  98,
+                  111,
+                  120
+                ]
+              }
+            ]
+          },
+          "writable": true
+        },
+        {
+          "name": "user",
+          "signer": true,
+          "writable": true
+        },
+        {
+          "name": "admin_usdc_account",
+          "writable": true
+        },
+        {
+          "name": "program_usdc_account",
+          "writable": true
+        },
+        {
+          "name": "usdc_mint"
+        },
+        {
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+          "name": "token_program"
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ],
+      "discriminator": [
+        184,
+        148,
+        250,
+        169,
+        224,
+        213,
+        34,
+        126
+      ],
+      "name": "deposit_usdc"
+    },
+    {
+      "accounts": [
+        {
+          "name": "mystery_box",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  109,
+                  121,
+                  115,
+                  116,
+                  101,
+                  114,
+                  121,
+                  95,
+                  98,
+                  111,
+                  120
+                ]
+              }
+            ]
+          },
+          "writable": true
+        },
+        {
+          "name": "user",
+          "signer": true,
+          "writable": true
+        },
+        {
+          "name": "program_usdc_account",
+          "writable": true
+        },
+        {
+          "name": "recipient_usdc_account",
+          "writable": true
+        },
+        {
+          "name": "usdc_mint"
+        },
+        {
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+          "name": "token_program"
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        },
+        {
+          "name": "recipient",
+          "type": "pubkey"
+        }
+      ],
+      "discriminator": [
+        119,
+        215,
+        64,
+        246,
+        212,
+        232,
+        59,
+        187
+      ],
+      "name": "distribute_usdc_direct"
+    },
+    {
+      "accounts": [
+        {
+          "name": "mystery_box",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  109,
+                  121,
+                  115,
+                  116,
+                  101,
+                  114,
+                  121,
+                  95,
+                  98,
+                  111,
+                  120
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "program_usdc_account"
+        },
+        {
+          "name": "usdc_mint"
+        }
+      ],
+      "args": [],
+      "discriminator": [
+        153,
+        183,
+        239,
+        179,
+        253,
+        7,
+        90,
+        45
+      ],
+      "name": "get_program_balances"
+    },
+    {
+      "accounts": [
+        {
+          "name": "mystery_box",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  109,
+                  121,
+                  115,
+                  116,
+                  101,
+                  114,
+                  121,
+                  95,
+                  98,
+                  111,
+                  120
+                ]
+              }
+            ]
+          },
+          "writable": true
+        },
+        {
+          "name": "user",
+          "signer": true,
+          "writable": true
+        },
+        {
+          "address": "11111111111111111111111111111111",
+          "name": "system_program"
+        }
+      ],
+      "args": [
+        {
+          "name": "admin",
+          "type": "pubkey"
+        }
+      ],
+      "discriminator": [
+        175,
+        175,
+        109,
+        31,
+        13,
+        152,
+        155,
+        237
+      ],
+      "name": "initialize"
+    },
+    {
+      "accounts": [
+        {
+          "name": "mystery_box",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  109,
+                  121,
+                  115,
+                  116,
+                  101,
+                  114,
+                  121,
+                  95,
+                  98,
+                  111,
+                  120
+                ]
+              }
+            ]
+          },
+          "writable": true
+        },
+        {
+          "name": "user",
+          "signer": true,
+          "writable": true
+        },
+        {
+          "name": "user_jup_account",
+          "writable": true
+        },
+        {
+          "name": "program_jup_account",
+          "writable": true
+        },
+        {
+          "name": "program_usdc_account",
+          "writable": true
+        },
+        {
+          "name": "user_usdc_account",
+          "writable": true
+        },
+        {
+          "name": "jup_mint"
+        },
+        {
+          "name": "usdc_mint"
+        },
+        {
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+          "name": "token_program"
+        }
+      ],
+      "args": [
+        {
+          "name": "jup_amount",
+          "type": "u64"
+        }
+      ],
+      "discriminator": [
+        176,
+        116,
+        116,
+        238,
+        17,
+        125,
+        252,
+        70
+      ],
+      "docs": [
+        "Purchase box with JUP and receive USDC automatically (Simple Fixed Rate)"
+      ],
+      "name": "purchase_box_with_jup_auto_simple"
+    },
+    {
+      "accounts": [
+        {
+          "name": "mystery_box",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  109,
+                  121,
+                  115,
+                  116,
+                  101,
+                  114,
+                  121,
+                  95,
+                  98,
+                  111,
+                  120
+                ]
+              }
+            ]
+          },
+          "writable": true
+        },
+        {
+          "name": "user",
+          "signer": true,
+          "writable": true
+        },
+        {
+          "name": "fee_wallet",
+          "writable": true
+        },
+        {
+          "address": "11111111111111111111111111111111",
+          "name": "system_program"
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ],
+      "discriminator": [
+        227,
+        36,
+        149,
+        131,
+        3,
+        74,
+        222,
+        112
+      ],
+      "name": "purchase_box_with_sol"
+    },
+    {
+      "accounts": [
+        {
+          "name": "mystery_box",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  109,
+                  121,
+                  115,
+                  116,
+                  101,
+                  114,
+                  121,
+                  95,
+                  98,
+                  111,
+                  120
+                ]
+              }
+            ]
+          },
+          "writable": true
+        },
+        {
+          "name": "user",
+          "signer": true,
+          "writable": true
+        },
+        {
+          "name": "fee_wallet",
+          "writable": true
+        },
+        {
+          "name": "program_usdc_account",
+          "writable": true
+        },
+        {
+          "name": "user_usdc_account",
+          "writable": true
+        },
+        {
+          "name": "usdc_mint"
+        },
+        {
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+          "name": "token_program"
+        },
+        {
+          "address": "11111111111111111111111111111111",
+          "name": "system_program"
+        }
+      ],
+      "args": [
+        {
+          "name": "sol_amount",
+          "type": "u64"
+        }
+      ],
+      "discriminator": [
+        253,
+        68,
+        118,
+        129,
+        234,
+        119,
+        57,
+        9
+      ],
+      "docs": [
+        "Purchase box with SOL and receive USDC automatically (Simple Fixed Rate)"
+      ],
+      "name": "purchase_box_with_sol_auto_simple"
+    },
+    {
+      "accounts": [
+        {
+          "name": "mystery_box",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  109,
+                  121,
+                  115,
+                  116,
+                  101,
+                  114,
+                  121,
+                  95,
+                  98,
+                  111,
+                  120
+                ]
+              }
+            ]
+          },
+          "writable": true
+        },
+        {
+          "name": "user",
+          "signer": true,
+          "writable": true
+        },
+        {
+          "name": "user_token_account",
+          "writable": true
+        },
+        {
+          "name": "program_token_account",
+          "writable": true
+        },
+        {
+          "name": "token_mint"
+        },
+        {
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+          "name": "token_program"
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ],
+      "discriminator": [
+        164,
+        140,
+        44,
+        200,
+        15,
+        135,
+        132,
+        32
+      ],
+      "name": "purchase_box_with_token"
+    },
+    {
+      "accounts": [
+        {
+          "name": "mystery_box",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  109,
+                  121,
+                  115,
+                  116,
+                  101,
+                  114,
+                  121,
+                  95,
+                  98,
+                  111,
+                  120
+                ]
+              }
+            ]
+          },
+          "writable": true
+        },
+        {
+          "name": "user",
+          "signer": true
+        }
+      ],
+      "args": [
+        {
+          "name": "is_active",
+          "type": "bool"
+        }
+      ],
+      "discriminator": [
+        29,
+        16,
+        225,
+        132,
+        38,
+        216,
+        206,
+        33
+      ],
+      "name": "set_active"
+    },
+    {
+      "accounts": [
+        {
+          "name": "mystery_box",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  109,
+                  121,
+                  115,
+                  116,
+                  101,
+                  114,
+                  121,
+                  95,
+                  98,
+                  111,
+                  120
+                ]
+              }
+            ]
+          },
+          "writable": true
+        },
+        {
+          "name": "user",
+          "signer": true,
+          "writable": true
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ],
+      "discriminator": [
+        145,
+        131,
+        74,
+        136,
+        65,
+        137,
+        42,
+        38
+      ],
+      "name": "withdraw_sol"
+    }
+  ],
+  "metadata": {
+    "description": "Created with Anchor",
+    "name": "mystery_box_solana",
+    "spec": "0.1.0",
+    "version": "0.1.0"
+  },
+  "types": [
+    {
+      "name": "BatchDistributionStarted",
+      "type": {
+        "fields": [
+          {
+            "name": "distributor",
+            "type": "pubkey"
+          },
+          {
+            "name": "total_recipients",
+            "type": "u32"
+          },
+          {
+            "name": "total_amount",
+            "type": "u64"
+          }
+        ],
+        "kind": "struct"
+      }
+    },
+    {
+      "name": "BoxPurchased",
+      "type": {
+        "fields": [
+          {
+            "name": "user",
+            "type": "pubkey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "fee_amount",
+            "type": "u64"
+          },
+          {
+            "name": "swap_amount",
+            "type": "u64"
+          },
+          {
+            "name": "token_type",
+            "type": {
+              "defined": {
+                "name": "TokenType"
+              }
+            }
+          }
+        ],
+        "kind": "struct"
+      }
+    },
+    {
+      "name": "BoxPurchasedAutomatic",
+      "type": {
+        "fields": [
+          {
+            "name": "user",
+            "type": "pubkey"
+          },
+          {
+            "name": "sol_amount",
+            "type": "u64"
+          },
+          {
+            "name": "fee_amount",
+            "type": "u64"
+          },
+          {
+            "name": "swap_amount",
+            "type": "u64"
+          },
+          {
+            "name": "usdc_received",
+            "type": "u64"
+          },
+          {
+            "name": "token_type",
+            "type": {
+              "defined": {
+                "name": "TokenType"
+              }
+            }
+          }
+        ],
+        "kind": "struct"
+      }
+    },
+    {
+      "name": "MysteryBox",
+      "type": {
+        "fields": [
+          {
+            "name": "admin",
+            "type": "pubkey"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          },
+          {
+            "name": "is_active",
+            "type": "bool"
+          },
+          {
+            "name": "total_sol_received",
+            "type": "u64"
+          },
+          {
+            "name": "total_tokens_received",
+            "type": "u64"
+          },
+          {
+            "name": "total_usdc_distributed",
+            "type": "u64"
+          }
+        ],
+        "kind": "struct"
+      }
+    },
+    {
+      "name": "OnchainSwapRequested",
+      "type": {
+        "fields": [
+          {
+            "name": "input_token",
+            "type": "string"
+          },
+          {
+            "name": "output_token",
+            "type": "string"
+          },
+          {
+            "name": "input_amount",
+            "type": "u64"
+          },
+          {
+            "name": "recipient",
+            "type": "pubkey"
+          },
+          {
+            "name": "wsol_account",
+            "type": "pubkey"
+          },
+          {
+            "name": "usdc_account",
+            "type": "pubkey"
+          }
+        ],
+        "kind": "struct"
+      }
+    },
+    {
+      "name": "ProgramBalances",
+      "type": {
+        "fields": [
+          {
+            "name": "sol_balance",
+            "type": "u64"
+          },
+          {
+            "name": "usdc_balance",
+            "type": "u64"
+          },
+          {
+            "name": "total_sol_received",
+            "type": "u64"
+          },
+          {
+            "name": "total_tokens_received",
+            "type": "u64"
+          },
+          {
+            "name": "total_usdc_distributed",
+            "type": "u64"
+          }
+        ],
+        "kind": "struct"
+      }
+    },
+    {
+      "name": "SolWithdrawn",
+      "type": {
+        "fields": [
+          {
+            "name": "admin",
+            "type": "pubkey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          }
+        ],
+        "kind": "struct"
+      }
+    },
+    {
+      "name": "SwapRequested",
+      "type": {
+        "fields": [
+          {
+            "name": "user",
+            "type": "pubkey"
+          },
+          {
+            "name": "input_amount",
+            "type": "u64"
+          },
+          {
+            "name": "input_token",
+            "type": "string"
+          },
+          {
+            "name": "output_token",
+            "type": "string"
+          },
+          {
+            "name": "program_pda",
+            "type": "pubkey"
+          }
+        ],
+        "kind": "struct"
+      }
+    },
+    {
+      "name": "TokenType",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Sol"
+          },
+          {
+            "name": "Jup"
+          }
+        ]
+      }
+    },
+    {
+      "name": "UsdcDeposited",
+      "type": {
+        "fields": [
+          {
+            "name": "depositor",
+            "type": "pubkey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          }
+        ],
+        "kind": "struct"
+      }
+    },
+    {
+      "name": "UsdcDistributed",
+      "type": {
+        "fields": [
+          {
+            "name": "recipient",
+            "type": "pubkey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "distributor",
+            "type": "pubkey"
+          }
+        ],
+        "kind": "struct"
+      }
+    }
+  ]
+}
